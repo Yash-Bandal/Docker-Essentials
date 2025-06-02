@@ -85,17 +85,26 @@ Runs a container using the Ubuntu image.
 
 <br>
 
-### 3.2 Run with Interactive Terminal
+### 3.2 Run with Interactive Terminal 🚩
 
 ```bash
 docker run -it ubuntu /bin/bash
 ```
 
-Launches an interactive shell session inside the Ubuntu container.
+- Launches an interactive shell session inside the Ubuntu container, that allow input and output.
+- Allows to enter a container  having its own `individual environment`,  where you can run CLI commands like `ls` and all
+- Now you can create your own `Directories` within this container
+```bash
+mkdir YB-Productions
+```
+```
+root@b9be8f931b5d:/# ls
+YB-productions  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+```
 
 <br>
 
-### 3.3 Run in Detached Mode
+### 3.3 Run in Detached Mode 
 
 ```bash
 docker run -d nginx
@@ -110,6 +119,9 @@ Runs the container in background (detached) mode.
 ```bash
 docker ps
 ```
+```
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
 
 Shows currently running containers.
 
@@ -119,6 +131,11 @@ Shows currently running containers.
 
 ```bash
 docker ps -a
+```
+```
+CONTAINER ID   IMAGE         COMMAND       CREATED          STATUS                          PORTS     NAMES
+b9be8f931b5d   ubuntu        "/bin/bash"   2 minutes ago    Exited (0) About a minute ago             vigorous_gauss
+04eb33e209de   hello-world   "/hello"      50 minutes ago   Exited (0) 50 minutes ago                 festive_yonath
 ```
 
 Shows all containers including stopped ones.
@@ -299,10 +316,14 @@ Stops and removes containers, networks, and volumes defined in the Compose file.
 
 ---
 
+# Exit Container :
+```
+exit
+```
 
 <br>
 
-## 9. Summary Table<br>
+##  Summary Table<br>
 
 | Command                  | Description                 |
 | ------------------------ | --------------------------- |
