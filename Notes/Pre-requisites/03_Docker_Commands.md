@@ -2,6 +2,13 @@
 
 This lesson covers all major Docker commands, grouped into logical categories, with brief explanations and formatted outputs.
 
+Type `docker` to get list of all commands in terminal
+```
+docker
+```
+
+Some major commands used are :
+
 <br>
 
 # 1. Docker Version and Info<br>
