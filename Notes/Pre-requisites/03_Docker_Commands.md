@@ -50,12 +50,21 @@ Lists all locally available Docker images.
 <br>
 
 ### 2.2 Pull Image from Docker Hub
-
-```bash
-docker pull ubuntu
+```
+docker pull IMAGE_NAME : VERSION
 ```
 
-Downloads the latest Ubuntu image from Docker Hub.
+#### 2.3.1 Default Pull Latest Image
+```bash
+docker pull mysql
+```
+#### 2.3.2 Specific Version
+```bash
+docker pull mysql:8.0
+```
+
+Downloads the mysql image from Docker Hub.
+- This allows to use 2+ versions of a IMAGE in different containers
 
 <br>
 
@@ -142,23 +151,69 @@ Shows all containers including stopped ones.
 
 <br>
 
-### 3.6 Stop a Running Container
+### 3.6 Start a Running Container 
+
+>..no <>
 
 ```bash
-docker stop <container_id>
+docker start <container_name> OR <container_id>
 ```
 
-Gracefully stops a running container.
+Gracefully starts  a  existing running container.
+- Green Light starts inside dashboard 🟢
 
 <br>
 
-### 3.7 Remove a Container
+### 3.7 Stop a Running Container
+
+```bash
+docker stop <container_name> OR <container_id>
+```
+
+Gracefully stops a running container. 
+- Green Light stops inside dashboard ⚫
+
+<br>
+
+### 3.8 Remove a Container
 
 ```bash
 docker rm <container_id>
 ```
 
 Deletes a stopped container.
+- If we try running container
+  
+  ```
+   > Error response from daemon: conflict: unable to delete 6015f66923d7 (cannot be forced) - container is being used by running
+  ```
+
+<br>
+
+### 3.9 Remove a Image
+
+```bash
+docker rmi <IMAGE_id>
+```
+
+Deletes a stopped IMAGE.
+- If we try to delete IMAGE with running container
+- First we need to remove container -> then Image
+
+```bash
+1. Error
+PS C:\Users\admin> docker rmi  0b6a027b5cf3
+Error response from daemon: conflict: unable to delete 0b6a027b5cf3 (cannot be forced) - image is being used by running container 0b6a027b5cf3
+
+2. delete container
+PS C:\Users\admin> docker rm 04eb33e209de
+04eb33e209de
+
+3. delete image
+PS C:\Users\admin> docker rmi   0b6a027b5cf3
+Untagged: hello-world:latest
+Deleted: sha256:0b6a027b5cf322f09f6706c754e086a232ec1ddba835c8a15c6cb74ef0d43c29
+```
 
 <br>
 
@@ -336,6 +391,11 @@ exit
 | `docker volume`          | Manage volumes              |
 | `docker network`         | Manage networks             |
 | `docker-compose up/down` | Manage multi-container apps |
+
+
+<br>
+
+[MYSQL_image](https://hub.docker.com/_/mysql)
 
 ---
 > These Docker commands form the foundation of container-based development and deployment workflows.
