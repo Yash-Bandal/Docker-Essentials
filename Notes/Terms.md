@@ -8,4 +8,16 @@ You (the user) place orders by giving commands, but the chef (daemon) does the c
 
 <br>
 
-## 2. 
+## 2. Docker Hub
+**Docker Hub** is a **cloud-based registry service** where you can:
+1.  **Store** Docker images
+2.  **Share** them with others
+3.  **Download (pull)** images built by others    
+4.  **Build and automate** your own image pipelines
+
+Think of it like **GitHub, but for multipe Docker images**.
+
+Like we `git clone ` repositories from github, we `pull` images from Docker Hub
+- Example :- Try searching Ubuntu, helloworld image on hub
+
+<br>
