@@ -40,7 +40,7 @@ Docker containers can be directly used in `Kubernetes`, which allows them to be 
 
 # Docker Architecture
  1. The Docker client contacted the [Docker daemon](https://github.com/Yash-Bandal/Docker-Essentials/blob/main/Notes/Terms.md#1-docker-daemon).
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.     
+ 2. The Docker daemon pulled the "hello-world" image from the [Docker Hub](https://github.com/Yash-Bandal/Docker-Essentials/blob/main/Notes/Terms.md#2-docker-hub).     
     (amd64)
  3. The Docker daemon created a new container from that image which runs the  
     executable that produces the output you are currently reading.
