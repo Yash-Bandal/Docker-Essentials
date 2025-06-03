@@ -132,17 +132,7 @@ This Ubuntu container is just the beginning. Later, we’ll run containers for *
 
 <br>
 
-# 5 Docker vs VM
 
-<br>
-
----
-
-<br>
-
-# 4 Important Docker Commands
-
-[Docker Commands](https://github.com/Yash-Bandal/Docker-Essentials/blob/main/Notes/Pre-requisites/03_Docker_Commands.md)
 
 ## Key Concepts:
 ### 1. Layers in DockerImages
@@ -170,12 +160,55 @@ While Downloading/ Pulling Images, different Layers are installed (see the `Down
   
 <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/6de214837e5b3f8412d55e39b1831dd86560c1d5/Notes/StoreRoom/04_LayersSee.PNG" width = 400>
 
+
+
 <br>
 
 ---
 
 <br>
 
+# 5 Docker vs VM
+
+
+
+1. Docker only virtualizes the `Application Layer`  and uses the `Host OS` of the Users Machine.  
+2. Virtual Machine virtualizes the `Application Layer`  as well as `Host OS`. 
+
+
+| Feature | Docker | Virtual Machine |
+| ---------------- | ------------------------- | ----------------------------------- |
+| Isolation Method | Shares the host OS kernel | Emulates full OS (including kernel) |
+| Size | **Docker container image**: Lightweight (MBs) eg.   `ubuntu`: ~29 MB| **Virtual Machine image** (a full OS): Heavy (GBs) eg. Ubuntu VM: 2–4 GB minimum | 
+| Startup Time | Seconds | Minutes |
+| Performance | Close to native (due to no overhead) | Slower (due to OS overhead) |
+| Portability | Very portable | Less portable |
+| Use Case | App-level isolation | System-level isolation |
+| Disadvantage |  it has compatibility issues (It was initially buuld for LINUS OS) | It has No compatibility issues (work for all OS)|
+
+<br>
+<div align = "center">
+   <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/a439cfb018a10431d6e9b4ee64874d026e27419a/Notes/StoreRoom/05_Difference.png" width = 600>
+   <h3>Architectures</h3>
+</div>
+
+<br>
+
+---
+>Docker was initially built for Linux, and although it now supports Windows and macOS via Docker Desktop, under the hood it still relies on Linux-based containers.
+---
+
+Now you may think , how we can run `LINUX KERNEL` on windows or Mac, because we use Docker Desktop :
+ - On Windows/macOS, Docker runs a lightweight Hypervisor/ VM in the background.
+ - On Linux, Docker works natively (natuarally).
+Thus, DOCKER is more compatible with LINUX and most companies Run DOCKER on LINUX. but its compatible for Small Projects on Windows and Mac
+
+
+<br>
+
+---
+
+<br>
 
 
 
