@@ -21,3 +21,11 @@ Like we `git clone ` repositories from github, we `pull` images from Docker Hub
 - Example :- Try searching Ubuntu, helloworld image on hub
 
 <br>
+
+## 3. Docker Image Layers
+- In Docker, **Docker Image layers** are the building blocks of Docker images. Every image is made up of a **stack of read-only layers**, where each layer represents an **instruction** in your `Dockerfile`.
+-  A **layer** in Docker is a cached snapshot of a file system change — like adding files, installing software, or setting up environment variables.
+
+<br>
+
+
