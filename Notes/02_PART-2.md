@@ -101,17 +101,9 @@ This proves that **Docker containers provide clean, isolated environments** for 
 
 This Ubuntu container is just the beginning. Later, we’ll run containers for **Node.js**, **MongoDB**, and other technologies — each isolated in its own space.
 
----
 
-# Docker Hub
-##  What is Docker Hub?
-**Docker Hub** is a **cloud-based registry service** where you can:
-1.  **Store** Docker images
-2.  **Share** them with others
-3.  **Download (pull)** images built by others    
-4.  **Build and automate** your own image pipelines
 
-Think of it like **GitHub, but for multipe Docker images**.
+
 
 
 <br>
@@ -123,6 +115,24 @@ Think of it like **GitHub, but for multipe Docker images**.
 # 3 Installation
 [Youtube](https://www.youtube.com/watch?v=ZyBBv1JmnWQ)
 
+
+<br>
+
+---
+
+<br>
+
+# 4 Docker Commands
+
+[Docker Commands](https://github.com/Yash-Bandal/Docker-Essentials/blob/main/Notes/02_PART-2.md)
+
+<br>
+
+---
+
+<br>
+
+# 5 Docker vs VM
 
 <br>
 
@@ -162,8 +172,14 @@ While Downloading/ Pulling Images, different Layers are installed (see the `Down
 
 <br>
 
-### 2. Port Binfing
-### 2. Port Binding
+---
+
+<br>
+
+
+
+
+# 6 Port Mapping & Setting Env Variables
 - **Port binding** is the process of making a **port inside a Docker container** accessible from your **host machine** (and optionally, the internet).
 - Every Docker container has its own internal ports. For example, a MySQL container usually runs on **port 3306** internally. However, this port is **not exposed to your host system by default**.
 
@@ -190,6 +206,7 @@ mysql        8.0       4890b3247d48   7 weeks ago   1.06GB
 ```
 
 <br>
+<br>
 
 **2. Run two containers for each**
  - Image -mysql -> Container -mysql-latest
@@ -197,6 +214,7 @@ mysql        8.0       4890b3247d48   7 weeks ago   1.06GB
 	PS C:\Users\admin> docker run -d  -e MYSQL_ROOT_PASSWORD=secret --name mysql-latest mysql
 	4be703d8a5655e507328a5d3f6ae7a9f7a66bfa781d42d9d629f5ec84e9c473c
 	```
+ 
 	
 - Use Image - mysql:8.0 -> Container - mysql-older
 	```bash
@@ -225,12 +243,16 @@ mysql        8.0       4890b3247d48   7 weeks ago   1.06GB
       PS C:\Users\admin> docker rm mysql-latest
       mysql-latest
       ```
+
+      <br>
       
    - 3.2  Now we only have IMAGES and no CONTAINERS
        ```bash
        PS C:\Users\admin> docker ps -a
        CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
        ```
+
+       <br>
        
    - 3.3 Bind ports
        - Note that , we cant bind 1 port with 2 containers / 1 containers with 2 ports
@@ -247,6 +269,7 @@ mysql        8.0       4890b3247d48   7 weeks ago   1.06GB
          docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint mysql-old
          er (15c728ddb7af5747083c422473807528e4b32d9e6f8f80ed9b6f7611f9ba876e): Bind for 0.0.0.0:8080 failed: port is already allocated
          ```
+         <br>
 
          ERROR - binding above port 8080 of mysql to mysql 8.0
          - Connecting `mysql-older` with different port is done
@@ -262,3 +285,20 @@ mysql        8.0       4890b3247d48   7 weeks ago   1.06GB
          ```
 
          <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/fce2351433ec84ef26fe02c19982d4e543eae72b/Notes/StoreRoom/04_portrun.PNG" width = 900>
+
+
+<br>
+
+---
+
+<br>
+
+# 7 Troubleshooting Containers (When Issues Occur)
+[Trouble Shoot Commands](https://github.com/Yash-Bandal/Docker-Essentials/blob/main/Notes/Pre-requisites/03_Docker_Commands.md#7-docker-exec-and-logs-trouble-shooting)
+
+
+<br>
+
+---
+
+<br>
