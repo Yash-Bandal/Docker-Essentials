@@ -42,6 +42,9 @@ Lets consider the  `Node.js` Application settup
 ### Steps
 
 1. **Create a custom network** (e.g., `mongo-network`)
+    ```
+    docker network create mongo-network
+    ```
 
 2. No need to pull the Mongo image manually from Docker Hub — it will auto-pull when not found locally.
 
@@ -59,6 +62,7 @@ Lets consider the  `Node.js` Application settup
      * `-p 27017:27017` — map port
      * `--name mongo`
      * `--network mongo-network` — to run inside our isolated custom network
+     * `mongo` - dont forget this last name to auto pull latest container
 
    * Set up the Two main environment variables:
 
@@ -188,4 +192,29 @@ Lets consider the  `Node.js` Application settup
        ```
 
 8. Visit `http://localhost:8081/` in your browser
+   * You will see a UI interface
+   <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/a5dd50b93f9e920b84c66a62caf01044f2c236b6/Notes/StoreRoom/08_localhost.PNG" width = 400>
+
+     * Enter standard username `admin` and password `pass`
+     * Thus we see, we are able to interact with mongoDB **database** using `mongo-express` interactive GUI
+     * Now you can create your custom database within
+         * Here we are using our custom DB anme `yash-db` predefined in our `serve.js` code and collection name `users`.
+         * Edit new document
+         * we need email , username , password
+         * ```
+           {
+                _id: ObjectId('683f31d254f1995b86e78da0'),
+                email: 'jane@yahoo.in',
+                username: 'Jane Doe',
+                password: 'secret'
+            }
+            ```
+     * Now we check if our Node.js application is connected with our database
+         * We execute get request inside `server.js` and and send a request at `/getusers` by running the `server.js` inside `vscode`
+         * ```
+           PS E:\Docker> node "e:\Docker\docker-testapp\server.js"
+            server running on port 5050
+            Connected successfully to server
+            ```
+           <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/866402b9bfafb851aa9fed08249c3c670269fe47/Notes/StoreRoom/connectionDone.PNG" width = 500>
 
