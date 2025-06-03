@@ -37,40 +37,53 @@ Lets consider the  `Node.js` Application settup
  > Quick Tip :  use [ `\`] or  [ `] [space symbol] at every CLI cmd end to allow cmd on next line without Enter
 ---
 
- 1. We create a custom network eg `<mongo-network>`
- 2. Note that we are not pulling the mongo IMAGE from HUB , since its image is not on our localhost, it will be auto pulled From HUB.
- 3. We run the container Directly
- 4. Now we setup our required containers inside network which could not communicate with PORTs,
- 5. Setting up Mongo container
-    5.1 mongo specifications [DockerHUB](https://hub.docker.com/_/mongo) -> Here see all requirements and env vars
-       - ` -d` detached mode 
-       - ` p 27017 : 27017` - Map port
-       -  ` --name mongo`
-       -  ` --network mongo-network`  - To run inside our isolated created network
-    5.2 Setup and define  `environment variables` :
-       - ` -e ENV_VAR`
-         
-       - The two main are 
-       ```
-      MONGO_INITDB_ROOT_USERNAME=root_username  (here `admin`)
-      MONGO_INITDB_ROOT_PASSWORD=example        (here `qwerty`)
-       ```
-       - ` -e Root_Username_var_above admin`
-       - `- e Root_Password_var_above qwerty`
-       -
-         ```
-         docker run `
-         -d `
-         -p27017:27017 `
-         --name mongo `
-         --network mongo-network `
-         -e MONGO_INITDB_ROOT_USERNAME=admin `
-         -e MONGO_INITDB_ROOT_PASSWORD=qwerty `
-         ```
-         
-    5.3 Finally write IMAGE name (Auto pulls latest Mongo Image from hub)
 
-      ```bash                
+
+### Steps
+
+1. **Create a custom network** (e.g., `mongo-network`)
+
+2. No need to pull the Mongo image manually from Docker Hub — it will auto-pull when not found locally.
+
+3. We Run the container directly.
+
+4. Now we setup our required containers inside network which could not communicate with PORTs,
+
+5. **Set up Mongo container**
+
+   * Refer: [DockerHub - Mongo](https://hub.docker.com/_/mongo)
+
+   * Key run specifications:
+
+     * `-d` detached mode
+     * `-p 27017:27017` — map port
+     * `--name mongo`
+     * `--network mongo-network` — to run inside our isolated custom network
+
+   * Set up the Two main environment variables:
+
+     ```
+     MONGO_INITDB_ROOT_USERNAME=admin  
+     MONGO_INITDB_ROOT_PASSWORD=qwerty
+     ```
+
+   * Full command:
+
+     ```
+     docker run `
+     -d `
+     -p27017:27017 `
+     --name mongo `
+     --network mongo-network `
+     -e MONGO_INITDB_ROOT_USERNAME=admin `
+     -e MONGO_INITDB_ROOT_PASSWORD=qwerty `
+     ```
+         
+    Finally write IMAGE name (Auto pulls latest Mongo Image from hub)
+
+   * Output (example):
+
+     ```bash
       PS C:\Users\admin> docker run `
         > -d `
         > -p27017:27017 `
@@ -98,25 +111,33 @@ Lets consider the  `Node.js` Application settup
       CONTAINER ID   IMAGE   COMMAND                 CREATED                  STATUS           PORTS                     NAMES
       60954fa395d9   mongo   "docker-entrypoint.s…"  Less than a second ago   Up 40 seconds    0.0.0.0:27017->27017/tcp  mongo
      ```
- 6.  Now similarly Run `mongo-express` container in the **same network**
-    6.1 The three vars include
+
+6. Now **Run `mongo-express` container in the same network**
+
+   * Required environment variables:
+
      ```bash
      ME_CONFIG_MONGODB_ADMINUSERNAME
      ME_CONFIG_MONGODB_ADMINPASSWORD
      ME_CONFIG_MONGODB_URL="mongodb://USERNAME:PASSWORD@mongo-container-name:27017"
      ```
-     ```
+     
+   
+   * Full command:
+
+     ```bash
      docker run `
-     -d `
-     -p8081:8081 `
-     --name mongo-express `
-     --network mongo-network `
-     -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin `
-     -e ME_CONFIG_MONGODB_ADMINPASSWORD=qwerty `
-     -e ME_CONFIG_MONGODB_URL="mongodb://admin:qwerty@mongo:27017" `                    
-     mongo-express
+       -d `
+       -p8081:8081 `
+       --name mongo-express `
+       --network mongo-network `
+       -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin `
+       -e ME_CONFIG_MONGODB_ADMINPASSWORD=qwerty `
+       -e ME_CONFIG_MONGODB_URL="mongodb://admin:qwerty@mongo:27017" `
+       mongo-express
      ```
-  
+
+   * Output (example):
 
      ```bash
      PS C:\Users\admin> docker run `
@@ -151,19 +172,20 @@ Lets consider the  `Node.js` Application settup
      15f9c7788893   mongo-express   "/sbin/tini -- /dock…"   21 minutes ago           Up 19 seconds              0.0.0.0:8081->8081/tcp
      ```
 
- 7. Avoid Mistaking the Username `admin` and password `qwerty`
+7. **Avoid mistaking the username `admin` and password `qwerty`**
 
-   -  While studying i mistaked the password and username of `mongo` container
-   -  Now, either delete the container (not image)
-   -  Or, enter the bash of `mongo`
-   -  ```
-      PS C:\Users\admin> docker exec -it mongo bash
-      root@60954fa395d9:/# mongosh -u WRONG_Username -p WRONGPASS --authenticationDatabase admin
+   * While studying i mistaked the password and username of `mongo` container , if wrong credentials are used:
 
-      test> use admin    ..or use gpt to check inner commands of mongoshell
-      switched to db admin
-      admin> db.changeUserPassword("admin","qwerty")
-      ```
+     * Either delete the container (not the image), or
+     * Enter the bash of the `mongo` container:
 
- 8. go to `http://localhost:8081/`
-   
+       ```bash
+       docker exec -it mongo bash
+       root@container:/# mongosh -u WRONG_Username -p WRONGPASS --authenticationDatabase admin
+
+       test> use admin
+       admin> db.changeUserPassword("admin","qwerty")
+       ```
+
+8. Visit `http://localhost:8081/` in your browser
+
