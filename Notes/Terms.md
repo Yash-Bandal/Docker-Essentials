@@ -29,3 +29,16 @@ Like we `git clone ` repositories from github, we `pull` images from Docker Hub
 <br>
 
 
+## 4 Networking in Docker
+
+By default, Docker containers are **isolated from each other**. Even though they may run on the same host, they don’t automatically see each other’s ports.
+To allow multiple containers (like Node.js and MongoDB) to communicate:
+-   We create a **custom Docker network**
+
+This network allows:
+-   The Node.js container to talk to MongoDB using the container’s **name** as the hostname    
+-   mongo-express to access the MongoDB container securely
+
+ [Network Commands](https://github.com/Yash-Bandal/Docker-Essentials/blob/main/Notes/Pre-requisites/03_Docker_Commands.md#5-docker-networks)
+
+
