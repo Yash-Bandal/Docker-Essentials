@@ -216,5 +216,30 @@ Lets consider the  `Node.js` Application settup
             server running on port 5050
             Connected successfully to server
             ```
-           <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/866402b9bfafb851aa9fed08249c3c670269fe47/Notes/StoreRoom/connectionDone.PNG" width = 500>
+            <table>
+              <tr>
+                <td>
+                  <img src="https://github.com/Yash-Bandal/Docker-Essentials/blob/866402b9bfafb851aa9fed08249c3c670269fe47/Notes/StoreRoom/connectionDone.PNG" width="500">
+                  <h3>Connection successful</h3>
+                </td>
+                <td>
+                  <img src="https://github.com/Yash-Bandal/Docker-Essentials/blob/dc7f9b74da698139b959b0f347fe9b27abacadc5/Notes/StoreRoom/08_finalConnection.PNG" width="500">
+                  <h3>Check /get and /post</h3>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">
+                  <img src="https://github.com/Yash-Bandal/Docker-Essentials/blob/dc7f9b74da698139b959b0f347fe9b27abacadc5/Notes/StoreRoom/08_FinalArchiteecture.PNG" width="500">
+                  <h3>Final Setup</h3>
+                </td>
+              </tr>
+            </table>
+            
+Now the Setup is completed, 
+- The two containers `mongo` and `mongo-express` are inside a same network and connected to each other  (different ports)
+- The `server.js` inside test-app communicates with `mongo` database inside DOCKER  and send get requests, without installation of mongodb on local machine 
 
+
+
+
+[Reference - Node.js Connection](https://www.docker.com/blog/how-to-setup-your-local-node-js-development-environment-using-docker/)
