@@ -412,8 +412,14 @@ Starts all services defined in `docker-compose.yml`.
 ```bash
 docker-compose up -d
 ```
+Runs services in detached mode. <br>
+eg:
+```bash
+docker compose -f mongodb.yaml up -d
+```
 
-Runs services in detached mode.
+
+
 
 <br>
 
@@ -421,6 +427,10 @@ Runs services in detached mode.
 
 ```bash
 docker-compose down
+```
+eg:
+```bash
+docker compose -f mongodb.yaml down
 ```
 
 Stops and removes containers, networks, and volumes defined in the Compose file.
