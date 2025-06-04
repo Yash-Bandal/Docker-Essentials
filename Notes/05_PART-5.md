@@ -206,25 +206,32 @@ Dockerfile
 ```Dockerfile
 FROM node
 
+# one line or \
 ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=qwerty
 
 # Make a test-app directory inside root app
-
 RUN mkdir -p testapp
+
+#if there were no node modules files
+# RUN npm install
 
 #operation : COPY <host-path of  docker-test-app>  <image-path testapp>
 COPY . /testapp
+
+#set working directory (vimp)
+WORKDIR /testapp
 
 #commands as array of strings
 #note that the server.js is inside /testapp not root
 #cmd `node /testapp/server.js`
 CMD ["node", "/testapp/server.js"]
-
-#run this to build app `docker build -t <IMAGENAME: testapp>:1.0 .` 
-#: = tag
-
 ```
+can set Port inside Dockerfile
+```Dockerfile
+ENV PORT=5050
+```
+
 <br>
 
 ### 2. Run the `build` command to start IMAGE creation
@@ -241,3 +248,30 @@ PS E:\Docker\docker-testapp> docker images
 REPOSITORY      TAG       IMAGE ID       CREATED          SIZE
 testapp         1.0       a16c0aa53e85   58 seconds ago   1.64GB
 ```
+If anything you add later, no need to delete the IMAGE completely, <br>
+Just rebuild using above command
+
+<br>
+
+### 3. Run the container
+a. Non interactive mode (my case..didnt worked..may be due no WORKDIR set , which I set later..and thenit worked)
+```bash
+PS E:\Docker\docker-testapp> docker run -p 5050:5050 testapp:1.0
+server running on port 5050
+```
+b. Interactive mode (worked effectively)
+```bash
+PS E:\Docker\docker-testapp> docker run -it -p 5050:5050 testapp:1.0 bash
+
+root@7b86ce4a1846:/testapp# ls
+Dockerfile  README.md  mongodb.yaml  node_modules  package-lock.json  package.json  public  server.js
+```
+If no Default node modules..RUN npm install inside dockerfile
+```
+root@7b86ce4a1846:/testapp# node server.js
+server running on port 5050
+```
+
+Both working Perfectly, just done forget Port Binding <br>
+Now you can try using Docker compose to Run all the three containers, at a time
+- the mongo, mongo-express and testapp build container
