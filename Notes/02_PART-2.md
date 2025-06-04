@@ -135,7 +135,7 @@ This Ubuntu container is just the beginning. Later, we’ll run containers for *
 
 
 ## Key Concepts:
-### 1. Layers in DockerImages
+### 12. Layers in DockerImages
 <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/5fe2ecd2678990666d041e5067fcb3f4bbcaa54d/Notes/StoreRoom/04_LayersInDockerImages.PNG" width = 600>
 <br>
 
