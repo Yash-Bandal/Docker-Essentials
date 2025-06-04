@@ -401,6 +401,7 @@ exit
 ```bash
 docker-compose up
 ```
+`up` is an action that means to create and start the containers
 
 Starts all services defined in `docker-compose.yml`.
 
@@ -423,6 +424,12 @@ docker-compose down
 ```
 
 Stops and removes containers, networks, and volumes defined in the Compose file.
+
+---
+> Note : to run the docker compose commands, open terminal in the required App `rg cd test-app`
+
+> Place the `yaml` file outside public folder, external directory
+---
 
 <br>
 
