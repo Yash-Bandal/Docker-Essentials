@@ -151,6 +151,18 @@ Think of a **Docker image like a layered cake**:
 -  2. Second Layer → Install Node.js   
 
 - 1.  Base Layer → The operating system (e.g., Ubuntu)
+
+###   Image layers
+Each layer in an image contains a set of filesystem changes - additions, deletions, or modifications. Let’s look at a theoretical image:
+```
+The first layer adds basic commands and a package manager, such as apt.
+The second layer installs a Python runtime and pip for dependency management.
+The third layer copies in an application’s specific requirements.txt file.
+The fourth layer installs that application’s specific dependencies.
+The fifth layer copies in the actual source code of the application.
+This example might look like:
+```
+[Reference-Diagram](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers/)
  
 <br>
 
