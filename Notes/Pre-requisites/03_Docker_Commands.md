@@ -222,36 +222,106 @@ Deleted: sha256:0b6a027b5cf322f09f6706c754e086a232ec1ddba835c8a15c6cb74ef0d43c29
 <br>
 
 # 4. Docker Volumes<br>
-
-### 4.1 Create a Volume
-
-```bash
-docker volume create mydata
-```
-
-Creates a named volume.
-
-<br>
-
-
-
-### 4.2 List Volumes
+### 4.1 List all Volumes
 
 ```bash
 docker volume ls
 ```
-
-Displays all Docker volumes.
+```
+DRIVER    VOLUME NAME
+local     6a5178a7ba9c1b3a2fcd65713efd726ffaca871de6920ff0e9dfc3cdabde8 (anonymous)
+local     64c0a692472e7c0479b20cd9587ff3f349f08a665fba9b088f0b3f4c3e741
+```
+displays all volumes
 
 <br>
+
+### 4.2 Create a Custom Named Volume (default `anonymous` Volumes)
+
+```bash
+docker volume create VOL_NAME
+```
+```bash
+docker volume ls
+```
+```
+DRIVER    VOLUME NAME
+local     6a5178a7ba9c1b3a2fcd65713efd726ffaca871de6920ff0e9dfc3cdabde8 (anonymous)
+local     64c0a692472e7c0479b20cd9587ff3f349f08a665fba9b088f0b3f4c3e741
+local     myVolume (named)
+```
+
+Creates a named volume, which our system allocates space automatically
+
+They are saved default within :
+
+---
+> Windows : C:\ProgramData\docker\Volumes <br>
+> Max/Linux :  /var/lib/docker/volumes
+---
+You can visit them and check
+
+<br>
+
+
+
 
 ### 4.3 Remove Volume
 
 ```bash
-docker volume rm mydata
+docker volume rm VOL_NAME
+```
+```bash
+PS E:\Docker\docker-testapp> docker volume rm myVolume
+myVolume
 ```
 
 Deletes the specified volume.
+
+<br>
+
+The named volumes we create are not attached with any `Container` by default and are isolated inside /docker/volumes <br>
+But the main role of volume is to maintain persistancy in containers , for this we use different `flags`
+```bash
+--volume flag /-v
+--mount flag
+```
+
+Mounting
+1. Named Volumes
+   ```bash
+   docker run -v VOL_NAME: CONT_DIR_PATH
+   ```
+   If name Exits , its a Volume space is created with the name, or automatically a anonymous name is assiged <br>
+   Named Volumes are prefered in real systems
+
+<br>
+
+2. Anonymous Volumes (No name ) - `tmpf`
+   ```bash
+   docker run -v  CONT_DIR_PATH
+   ```
+<br>
+
+3. Bind Mounts
+   ```bash
+   docker run -HOST_PATH : CONT_DIR_PATH
+   ```
+The suttle difference between Named and anonumous (1,2) and Bind mounts (3) is that 
+- ` Bind Mounts` are managed by **host machines**
+- `Named` and `Anonymous` Volume are managed by **Docker** itself
+
+  We can choose any volumes, but we prefer to choose as per use , same work can be done by `--mount` <br>
+  [See mount syntax](https://docs.docker.com/engine/storage/volumes/)
+
+<br>
+
+## Docker Volume Prune
+Sometimes, unused local volumes take up space. You can clean them using:
+```bash
+docker volume prune
+```
+Generally it targets anonymous volumes
 
 <br>
 
