@@ -1,9 +1,9 @@
-<h1 align ="center"><b>   Publishing to DockerHub </b></h1>
+<h1 align ="center"><b> 11  Publishing to DockerHub </b></h1>
 
 [Reference](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/)
 <br>
 
-# 11 Dockerizing our own Application
+#  A. Dockerizing our own Application
 Test-app -> Image -> Container ->upload
 
 - Here we are creating our own Docker container, but in general practical applications `CICD` pipelines with `Jenkins` are used. 
@@ -275,3 +275,76 @@ server running on port 5050
 Both working Perfectly, just done forget Port Binding <br>
 Now you can try using Docker compose to Run all the three containers, at a time
 - the mongo, mongo-express and testapp build container
+
+<br>
+
+---
+
+<br>
+
+#  B. Pushing on Docker Hub
+### 1. Create a repository within docker hub
+- You will see username/repo name after created
+- eg. `yashbandal25/testapp`
+
+<br>
+
+### 2. Recreate Image with name yashbandal25/testapp (takes 2 - 3 seconds)
+```bash
+PS E:\Docker> cd .\docker-testapp\
+
+PS E:\Docker\docker-testapp> docker build -t yashbandal25/testapp .
+[+] Building 3.5s (10/10) FINISHED                    docker:desktop-linux
+
+
+PS E:\Docker\docker-testapp> docker images
+REPOSITORY             TAG       IMAGE ID       CREATED          SIZE
+yashbandal25/testapp   latest    b5dbbe49d227   48 minutes ago   1.64GB
+
+```
+
+<br>
+
+### 3. Login the terminal with same DockerHub account
+- logout if not logged in previosly with same account
+  ```bash
+  PS E:\Docker\docker-testapp> docker logout
+  
+  Removing login credentials for https://index.docker.io/v1/
+  2025/06/04 20:37:09 notifying Desktop of credentials store update: getting credential helper update: no token found in credential manager for 'i
+  ndex.docker.io'
+
+  ```
+
+- Login using 2 ways
+  ```bash
+  docker login
+  ```
+  and enter Code in brower, or use below command
+  ```bash
+  i Info → To sign in with credentials on the command line, use 'docker login -u <username>'
+  
+  
+  Your one-time device confirmation code is: XXXX-XXXX
+  Press ENTER to open your browser or submit your device code here: https://login.docker.com/activate
+  
+  Waiting for authentication in the browser…
+  Login Succeeded
+  ```
+
+
+<br>
+
+### 4. Push  Repository to Docker Hub
+**Command :**
+```bash
+docker push username/reponame
+```
+
+<br>
+
+```bash
+PS E:\Docker\docker-testapp> docker push yashbandal25/testapp
+Using default tag: latest
+The push refers to repository [docker.io/yashbandal25/testapp]
+```
