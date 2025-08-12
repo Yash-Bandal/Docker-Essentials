@@ -15,9 +15,7 @@
 A Docker image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software, including the code, runtime, system tools, libraries, and settings.
 
 ## 2.2 Docker Container
-A Docker container is a lightweight, portable, and isolated environment that runs your application along with all of its dependencies.
-
-
+A Docker container is a lightweight, portable, and isolated environment that runs your application along with all of its dependencies. <br>
 Think of an image as a template or a snapshot of a container.
 - File that contains instructions to build a container .
 - Its similar to relation between `class` and `object`
@@ -26,7 +24,7 @@ Think of an image as a template or a snapshot of a container.
 
   <br>
 
-|   Feature | Docker Image | Docker Container |
+ |   Feature | Docker Image | Docker Container |
  |----------------|-------------------------------------|------------------|
  | Definition | Blueprint to build a container | Actual running instance of the image | 
  | Memory Usage | No memory usage unless instantiated | Uses system resources when running | 
