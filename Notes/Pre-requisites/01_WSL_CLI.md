@@ -251,7 +251,7 @@ This message shows that your installation appears to be working correctly.
 
 ---
 ## Errors running Docker?
-- Docker engine runs in background...once yo close start its dashboard from Desktop taskbar icon , near wifi options
+- Docker engine runs in background...once you close it, start its dashboard from Desktop taskbar icon, near wifi options.
 - If not working Engine
    - Check windows security -> App and broswer control -> explot protection -> Program settings -> find scroll down C::\Windows\...uncompute.exe -> edit and trun of CFG(control flow guard)
    - search in settings `Turn features on or off` and turn windows powershell and other requirements
