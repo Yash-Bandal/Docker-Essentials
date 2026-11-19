@@ -47,6 +47,8 @@ Think of an image as a template or a snapshot of a container.
   - Like 1 class (blueprint.)-> used to make 1+ instances
   - 1 Docker image (static blueprint) -> 1+ container
 
+> A container is essentially a group of processes running with isolation provided by the operating system.
+
   <br>
 
  |   Feature | Docker Image | Docker Container |
