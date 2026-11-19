@@ -21,7 +21,34 @@ Docker containers can be directly used in `Kubernetes`, which allows them to be 
 
 <br>
 
-## What we need?
+## **Q. Don't Github too share the application?**
+
+GitHub shares your application, not the Environment. Docker helps you ensure that your application run in a consistent environment across different machines.
+
+Here, without Docker Your application doesn't run in isolation. It depends on the environment in which it executes.
+
+For example, your application might require `Node.js 22`, but your friend's machine has `Node.js 18`.
+
+**Consider:**
+```
+Developer A — Windows
+Windows 11
+Node.js 22
+
+Application + dependencies
+```
+
+```
+Developer B — macOS
+macOS
+Node.js 18
+
+Same application + dependencies
+```
+
+<br>
+
+## While learning Docker, What we need?
 1. First undersand what is docker?
 2. What is docker image?
 
