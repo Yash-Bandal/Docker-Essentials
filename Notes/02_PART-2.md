@@ -14,6 +14,31 @@
 ## 2.1 Docker Image
 A Docker image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software, including the code, runtime, system tools, libraries, and settings.
 
+> **Q. From Where is this image created?**\
+> You write a file called `Dockerfile` in your project.
+>
+> Example `Dockerfile`
+> ```
+> FROM python:3.12
+>
+> WORKDIR /app
+>
+> COPY requirements.txt .
+>
+> RUN pip install -r requirements.txt
+>
+> COPY . .
+>
+> CMD ["python", "app.py"]
+> ```
+
+> [!Note]
+> Dockerfile is not the image. It is the instruction manual used to create the image.
+>
+> A Docker image consists of multiple read-only layers stacked together.
+
+<br>
+
 ## 2.2 Docker Container
 A Docker container is a lightweight, portable, and isolated environment that runs your application along with all of its dependencies. <br>
 Think of an image as a template or a snapshot of a container.
