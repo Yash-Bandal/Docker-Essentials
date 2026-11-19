@@ -164,7 +164,7 @@ This Ubuntu container is just the beginning. Later, we’ll run containers for *
 <img src = "https://github.com/Yash-Bandal/Docker-Essentials/blob/5fe2ecd2678990666d041e5067fcb3f4bbcaa54d/Notes/StoreRoom/04_LayersInDockerImages.PNG" width = 600>
 <br>
 
-[Docker Images](https://github.com/Yash-Bandal/Docker-Essentials/edit/main/Notes/Terms.md#3-docker-image-layers)
+[Docker Images](https://github.com/Yash-Bandal/Docker-Essentials/blob/main/Notes/Terms.md#3-docker-image-layers)
 
 Think of a **Docker image like a layered cake**:
 
