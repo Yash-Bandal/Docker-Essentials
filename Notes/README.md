@@ -1,6 +1,34 @@
-# Docker Notes :-
+# Docker  :-
 
 ## **Table of Contents**
+
+### 1. Fundamentals
+1. [Introduction to Docker & Why Docker?](./01_Introduction.md)
+2. [Docker Images & Containers](./02_PART-2.md)
+3. [Docker Installation & Setup](./02_PART-2.md#3-installation)
+4. [Docker Commands](./Pre-requisites/03_Docker_Commands.md)
+5. [Docker vs Virtual Machines](./02_PART-2.md#5-docker-vs-vm)
+6. [Port Mapping & Environment Variables](./02_PART-2.md#6-port-mapping--setting-env-variables)
+7. [Container Troubleshooting](./02_PART-2.md#7-troubleshooting-containers-when-issues-occur)
+
+### 2. Building & Deploying Applications
+8. [Building a Node.js Application with Docker](./03_PART-3.md)
+9. [Dockerizing a Node.js Application — Dockerfile](./04_PART-4.md)
+10. [Docker Compose](./05_PART-5.md)
+11. [Publishing Images to Docker Hub](./05_PART-5.md)
+
+### 3. Advanced Docker Concepts
+12. [Layers in Docker Images](./02_PART-2.md#12-layers-in-dockerimages)
+13. [Docker Volume Mounting & Data Persistence](./06_PART-6.md)
+14. [Docker Networking](./07_PART-7.md)
+
+### 4. Reference
+15. [Docker Terminology](./Terms.md)
+16. [Docker Commands Cheatsheet](./Pre-requisites/03_Docker_Commands.md)
+17. [Pre-requisites](./Pre-requisites/README.md)
+
+<br>
+
 ```
 Docker  Index
 1. What is Docker? Why do we need it?
