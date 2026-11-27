@@ -9,6 +9,9 @@ Kamal will use SSH to connect to this machine and execute deployment operations,
 ### Need of SSH Server
 <img width="557" height="181" alt="image" src="https://github.com/user-attachments/assets/94aeb01a-fffb-4976-9585-8357da6688fd" />
 
+
+<img width="526" height="355" alt="image" src="https://github.com/user-attachments/assets/6c25e782-858c-46f3-ae04-bcebca765ec5" />
+
 ```
 sudo systemctl status ssh
 ```
